@@ -40,7 +40,7 @@ namespace exercises2
                     Console.Write("\nByt ut ett namn 0-4: ");
                     string indexInput = Console.ReadLine();
                     string nameInput;
-                    if (indexInput == "1")
+                    if (indexInput == "0")
                     {
                         name[0] = "";
                         Console.WriteLine("\nVilket namn vill du lägga i?: ");
@@ -48,28 +48,28 @@ namespace exercises2
                         name[0] = nameInput;
 
                     }
-                    else if (indexInput == "2")
+                    else if (indexInput == "1")
                     {
                         name[1] = "";
                         Console.WriteLine("\nVilket namn vill du lägga i?: ");
                         nameInput = Console.ReadLine();
                         name[1] = nameInput;
                     }
-                    else if (indexInput == "3")
+                    else if (indexInput == "2")
                     {
                         name[2] = "";
                         Console.WriteLine("\nVilket namn vill du lägga i?: ");
                         nameInput = Console.ReadLine();
                         name[2] = nameInput;
                     }
-                    else if (indexInput == "4")
+                    else if (indexInput == "3")
                     {
                         name[3] = "";
                         Console.WriteLine("\nVilket namn vill du lägga i?: ");
                         nameInput = Console.ReadLine();
                         name[3] = nameInput;
                     }
-                    else if (indexInput == "5")
+                    else if (indexInput == "4")
                     {
                         name[4] = "";
                         Console.WriteLine("\nVilket namn vill du lägga i?: ");
