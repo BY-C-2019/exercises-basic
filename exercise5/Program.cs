@@ -6,11 +6,11 @@ namespace exercise5
     {
         static void Main(string[] args)
         {
-            Console.Write("Vad heter du? ");
+            Console.WriteLine("Hej! Vad heter du? ");
             string name = Console.ReadLine();
             Console.WriteLine("Välkommen " + name);
 
-            Console.Write("Hur gammal är du? ");
+            Console.WriteLine("Hur gammal är du? ");
             string input = Console.ReadLine();
 
             int age = Convert.ToInt32(input);
