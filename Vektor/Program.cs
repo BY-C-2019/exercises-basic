@@ -17,7 +17,7 @@ namespace Vektor
                 vektor[i]=Console.ReadLine();
 
             }
-
+            Console.Clear();
             for (int i = 0; i < vektor.Length; i++)
             {
                 Console.WriteLine(vektor[i]);
