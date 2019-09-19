@@ -21,6 +21,10 @@ namespace Exercise4
             {
                 Console.WriteLine("Oj då! Bra jobbat.");
             }
+            else if (summaDays <400)
+            {
+                Console.WriteLine("Du måste vara ett väldigt litet barn!");
+            }
             else 
             {
             Console.WriteLine("Du har levt i " + summaDays + " antal dagar. Vad kul!");    
