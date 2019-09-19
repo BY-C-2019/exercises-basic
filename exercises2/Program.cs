@@ -37,7 +37,7 @@ namespace exercises2
                         Console.WriteLine("\n" + "[" + i + "] " + name[i]);
                     }
 
-                    Console.Write("\nByt ut ett namn 1-5: ");
+                    Console.Write("\nByt ut ett namn 0-4: ");
                     string indexInput = Console.ReadLine();
                     string nameInput;
                     if (indexInput == "1")
