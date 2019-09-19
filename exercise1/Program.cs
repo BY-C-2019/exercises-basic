@@ -16,6 +16,7 @@ namespace exercise1
 			int sum = numberOne + numberTwo;
 
             Console.WriteLine("Summan är: " + sum);
+            Console.ReadKey();
         }
     }
 }
