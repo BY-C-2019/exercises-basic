@@ -6,7 +6,7 @@ namespace Exercises_v37
     {
         static void Main(string[] args)
         {
-            {
+
             Program prog = new Program();
             string[] menuItems = new string[]{
                 "Sum Two Integers",
@@ -15,7 +15,7 @@ namespace Exercises_v37
                 "Print some unicode",
                 "Retail Manager",
                 "Backpack Simulator"
-            };
+                };
 
             bool closeApp = true;
             int menuChoice = 0;
@@ -103,8 +103,6 @@ namespace Exercises_v37
             } while (closeApp);
         }
 
-
-
         public static int SumTwoInteger(int NumberOne, int numberTwo)
         {
             int result;
@@ -183,7 +181,7 @@ namespace Exercises_v37
                         Console.WriteLine("Your balance is: " + saldo);
                         Console.ReadKey();
                         break;
-                    
+
                     default:
                         bankClosed = true;
                         break;
@@ -229,6 +227,6 @@ namespace Exercises_v37
                 }
             } while (true);
         }
-        }
+
     }
 }
