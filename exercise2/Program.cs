@@ -11,7 +11,7 @@ namespace exercise2
 				Console.Write("Ange ett decimaltal:");
 				string input = Console.ReadLine();
 				double value = Convert.ToDouble(input);
-				int closestInt = (int)Math.Round(value);
+				double closestInt = Math.Round(value);
 				Console.WriteLine("Närmaste heltalet var: " + closestInt);
 			}
 			catch
