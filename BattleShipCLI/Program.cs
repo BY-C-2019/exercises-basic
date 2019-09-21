@@ -30,10 +30,14 @@ namespace BattleShipCLI
         static void Main(string[] args)
         {
 
-            int boardSizeX = 10;
-            int boardSizeY = 10;
+            int boardSizeX = 20;
+            int boardSizeY = 20;
 
-            char[] interactIndex = new char[boardSizeX];
+            int fireCoordinateX = 0;
+            int fireCoordinateY = 0;
+
+            
+            char[,] ships = new char[boardSizeY, boardSizeX];
 
             char[] interactLine = new char[boardSizeX * 4];
             char[] delimiterLine = new char[boardSizeX * 4];
@@ -47,14 +51,9 @@ namespace BattleShipCLI
             char separatorX = '|';
             char separatorY = '-';
 
-
-
             char[,] gameBoard = new char[boardSizeY, boardSizeX];
 
-            // For every row in 
-
-
-            Console.WriteLine("All personell to battlestation!");
+            Console.WriteLine("To battlestations!");
             Console.WriteLine("It's time for BattleShip!");
             Console.WriteLine("In the Command Line Interface!");
             Console.WriteLine("================================");
@@ -64,20 +63,30 @@ namespace BattleShipCLI
 
             do
             {
+                Console.Clear();
                 // Write out the gameboard.
                 // Draw a delimiter --------
-                for (int i = 0; i < gameBoard.GetLength(0) + 1; i++)
+
+                // Keeps track of the interactLine count and index of current
+                // value.
+                int interactLineCount = 0;
+                int interactIndex = 0;
+                for (int i = 0; i < (gameBoard.GetLength(0) + 1); i++)
                 {
                     Console.WriteLine();
+                    // varje ojämnt tal är en interactLine
                     if (i % 2 == 1)
                     {
                         // Draw a gameLine
-                        for (int j = 0; j < interactLine.Length + 1; j++)
+                        
+                        for (int j = 0; j <= interactLine.Length; j++)
                         {
+                            
                             // Kollar vart annat element för antingen interagera
                             // eller avskiljning.
                             if (j % 2 == 0)
                             {
+
                                 // Var fjärde element ska vara en avskiljare
                                 if (j % 4 == 0)
                                 {
@@ -88,16 +97,19 @@ namespace BattleShipCLI
                                     // Kontrollera om där finns något från
                                     // inteactIndex.
                                     //if (interactIndex[j])
-                                    Console.Write(" ");
+                                    Console.Write(gameBoard[interactLineCount, interactIndex]);
+                                    interactIndex ++;
                                 }
                             }
                             else
                             {
                                 Console.Write(" ");
                             }
+                            
+                            interactLineCount ++;
                         }
-                        
                     }
+                    // Varje jämnt tal är en delimiterLine
                     else
                     {
                         for (int j = 0; j < delimiterLine.GetLength(0) + 1; j++)
@@ -105,13 +117,30 @@ namespace BattleShipCLI
                             Console.Write(separatorY);
                         }
                     }
-
-
                 }
 
+                do 
+                {
+                    // Type in coordinates
+                    Console.WriteLine();
+                    Console.WriteLine("General! Type in Coordinates for torpedos!");
+                    Console.Write("[X]>>");
+                    fireCoordinateX = GameInput();
+                    Console.Write("[Y]>>");
+                    fireCoordinateY = GameInput();
 
-                // Type in coordinates
+                    // Is the coordinates valid gameboard values?
+                    if (CoordinateValidation(gameBoard, fireCoordinateX, fireCoordinateY))
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Those coordinates doesn´t add up!");
+                        Console.WriteLine("Try Again");
+                    }
 
+                }while(true);
 
                 // Update gameboard.
 
@@ -121,6 +150,35 @@ namespace BattleShipCLI
 
             } while (gameOn);
 
+        }
+
+        public static int GameInput()
+        {
+            int input = 0;
+            try
+            {
+                input = Convert.ToInt32(Console.ReadLine());
+            }
+            catch (System.Exception)
+            {
+                Console.WriteLine("Sir! Thats not the right format for the coordinates!");
+                Console.WriteLine("The enemy is getting away! Try again!");
+                return -1;
+            }
+
+            return input;
+        }
+
+        public static bool CoordinateValidation(char[,] gameBoard, int x, int y)
+        {
+            if (x < gameBoard.GetLength(1) && y < gameBoard.GetLength(0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
     }
