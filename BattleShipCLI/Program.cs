@@ -63,7 +63,6 @@ namespace BattleShipCLI
 
             do
             {
-                Console.Clear();
                 // Write out the gameboard.
                 // Draw a delimiter --------
 
@@ -71,9 +70,12 @@ namespace BattleShipCLI
                 // value.
                 int interactLineCount = 0;
                 int interactIndex = 0;
-                for (int i = 0; i < (gameBoard.GetLength(0) + 1); i++)
+                for (int i = 0; i < (gameBoard.GetLength(0))*2; i++)
                 {
                     Console.WriteLine();
+                    // Resetting interactIndex to 0 for a new interactLine.
+                    interactIndex = 0;
+                    
                     // varje ojämnt tal är en interactLine
                     if (i % 2 == 1)
                     {
@@ -105,9 +107,8 @@ namespace BattleShipCLI
                             {
                                 Console.Write(" ");
                             }
-                            
-                            interactLineCount ++;
                         }
+                        interactLineCount++;
                     }
                     // Varje jämnt tal är en delimiterLine
                     else
@@ -118,6 +119,11 @@ namespace BattleShipCLI
                         }
                     }
                 }
+                Console.WriteLine();
+                for (int j = 0; j < delimiterLine.GetLength(0) + 1; j++)
+                    {
+                        Console.Write(separatorY);
+                    }
 
                 do 
                 {
