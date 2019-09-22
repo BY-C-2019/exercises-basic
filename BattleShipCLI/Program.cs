@@ -30,7 +30,11 @@ namespace BattleShipCLI
         static void Main(string[] args)
         {
 
-            string[] responsToMiss = new string[5];
+            string[] responsToMiss = new string[] {
+                "What the hell is going on!! Are you blind?!",
+                "My grandma aims better than that!",
+                "Figth harder or I´ll find someone who can!!"
+            };
             string[] responsToHit = new string[5];
             string[] responsToSankShip = new string[5];
 
@@ -43,9 +47,6 @@ namespace BattleShipCLI
             int fireCoordinateX = 0;
             int fireCoordinateY = 0;
 
-            char[] interactLine = new char[boardSizeX * 4];
-            char[] delimiterLine = new char[boardSizeX * 4];
-
             bool gameOn = true;
 
             char hit = '#';
@@ -56,9 +57,6 @@ namespace BattleShipCLI
             char separatorX = '|';
             char separatorY = '-';
 
-            char[,] ships = new char[boardSizeY, boardSizeX];
-            char[,] gameBoard = new char[boardSizeY, boardSizeX];
-
             Console.WriteLine("To battlestations!");
             Console.WriteLine("It's time for BattleShip!");
             Console.WriteLine("In the Command Line Interface!");
@@ -68,7 +66,18 @@ namespace BattleShipCLI
             // TODO: Add function to exit program.
 
             // TODO: Select gameboard size.
+            Console.WriteLine("\nSelect Gameboard Size:");
+            Console.Write("[X]>>");
+            boardSizeX = GameInput();
+            Console.Write("[X]>>");
+            boardSizeY = GameInput();
 
+            // Initialize Gameboard
+            char[] interactLine = new char[boardSizeX * 4];
+            char[] delimiterLine = new char[boardSizeX * 4];
+            
+            char[,] ships = new char[boardSizeY, boardSizeX];
+            char[,] gameBoard = new char[boardSizeY, boardSizeX];
 
             do
             {
