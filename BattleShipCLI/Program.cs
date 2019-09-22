@@ -79,6 +79,9 @@ namespace BattleShipCLI
             char[,] ships = new char[boardSizeY, boardSizeX];
             char[,] gameBoard = new char[boardSizeY, boardSizeX];
 
+            Console.SetWindowSize(
+                gameBoard.GetLength(1) * 5, gameBoard.GetLength(0)+ 35);
+
             do
             {
                 Console.Clear();
@@ -98,11 +101,31 @@ namespace BattleShipCLI
                 // value.
                 int interactLineCount = 0;
                 int interactIndex = 0;
+
+                // For alining cordinates properly
+                Console.Write(" ");
+                // Print coordinates for X
+                for (int i = 0; i < interactLine.Length; i++)
+                {
+                    if (i % 4 == 0)
+                    {
+                        Console.Write(" " + interactIndex + " ");
+                        interactIndex++;
+                        if (i % 2 == 0 && interactIndex < 10)
+                        {
+                            Console.Write(" ");
+                        }
+                    }
+                    
+                }
+
                 for (int i = 0; i < (gameBoard.GetLength(0)) * 2; i++)
                 {
                     Console.WriteLine();
+                    
                     // Resetting interactIndex to 0 for a new interactLine.
                     interactIndex = 0;
+                    
 
                     // varje ojämnt tal är en interactLine
                     if (i % 2 == 1)
@@ -111,6 +134,7 @@ namespace BattleShipCLI
 
                         for (int j = 0; j <= interactLine.Length; j++)
                         {
+                            
 
                             // Kollar vart annat element för antingen interagera
                             // eller avskiljning.
@@ -135,6 +159,11 @@ namespace BattleShipCLI
                             {
                                 Console.Write(" ");
                             }
+                            // End Interact Line with Coordinate
+                            if (j == interactLine.Length)
+                                {
+                                    Console.Write(" " + interactLineCount + " ");
+                                }
                         }
                         interactLineCount++;
                     }
@@ -147,7 +176,7 @@ namespace BattleShipCLI
                         }
                     }
                 }
-                Console.WriteLine();
+                Console.WriteLine("   ");
                 for (int j = 0; j < delimiterLine.GetLength(0) + 1; j++)
                 {
                     Console.Write(separatorY);
