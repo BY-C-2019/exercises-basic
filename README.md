@@ -67,23 +67,15 @@ Skriv ett program som räknar baklänges från 40-30 och skriver ut dem på skä
 
 ## Övning 11
 
-1.	Skriv ett program som hämtar flera tal från användaren, och som sedan skriver ut talen samt deras sammanlagda summa. 
-Ni kan välja om ni vill använda hel eller decimaltal men ni måste använda en vektor för att spara undan talen. Använd for loop! 
+`Se "Arrayövningar" på Pingpong`
 
 ## Övning 12 
 
-Alla namn (del 1)
--	Skapa en string array med fem element. Användaren får mata in fem namn via en for-loop. Programmet skriver sedan ut dessa namn med hjälp av en for-loop. 
-
-Alla namn (del 2)
--	Efter att alla namn skrivits ut, ska användaren kunna skriva ett index och därefter ett annat namn. Personen på detta index i arrayen byts då ut och alla namn skrivs ut igen. Om användaren istället skriver ”q” eller ”Q” så avslutas programmet direkt. 
+`Se "Arrayövningar" på Pingpong`
 
 ## Övning 13
 
-3.	Väderstationen
--	Denna övning påminner om den förra, men man skriver inte i början hur många mätningar som ska göras. Allt sköts via en meny istället.
-När man väljer att ta bort en temperaturmätning, så anger man vilken mätning man vill ta bort med hjälp av index. 
-Bestäm själv om du använder for eller foreach. Motivera gärna ditt val i koden. 
+`Se "Väderstationen" på Pingpong`
 
 # Metoder
 ## Övning 14
