@@ -31,9 +31,12 @@ namespace BattleShipCLI
         {
             bool debug = false;
 
-            if (args[0] == "--debug")
+            if (args.Length > 0)
                 {
-                    debug = true;
+                    if (args[0] == "--debug")
+                    {
+                        debug = true;
+                    }
                 }
 
             string[] responsToMiss = new string[] {
@@ -85,21 +88,24 @@ namespace BattleShipCLI
             char[,] ships = new char[boardSizeY, boardSizeX];
             char[,] gameBoard = new char[boardSizeY, boardSizeX];
 
+             // Generate ships.
+            Random rand = new Random();
+            for (int i = 0; i < ships.GetLength(0); i++)
+            {
+                ships[i, boardSizeX / 2] = '*';
+            }
+
+            
             if (debug)
             {
                 gameBoard = ships;
                 Console.WriteLine("Debug Mode!");
             }
 
-             // Generate ships.
-            Random rand = new Random();
-            for (int i = 0; i < ships.GetLength(0); i++)
-            {
+            Console.Write("Press Enter to start...");
+            Console.ReadKey();
 
-            }
-
-            Console.SetWindowSize(
-                gameBoard.GetLength(1) * 5, gameBoard.GetLength(0)+ 35);
+            Console.SetWindowSize(100, gameBoard.GetLength(0)+ 35);
 
             do
             {
@@ -230,6 +236,7 @@ namespace BattleShipCLI
                 if (HitDetection(fireCoordinateX, fireCoordinateY, ships, ship))
                 {
                     Console.WriteLine("Excellent commander! Thay never saw it comming!");
+                    ships[fireCoordinateY, fireCoordinateX] = '#';
                     numberOfHits++;
                     torpedoStatus = hit;
                 }
@@ -244,8 +251,17 @@ namespace BattleShipCLI
                 gameBoard = UpdateGameBoard(
                     fireCoordinateX, fireCoordinateY, gameBoard, torpedoStatus);
 
+                // Check win conditions.
+                if (PlayerHasWon(ships))
+                {
+                    gameOn = false;
+                }
+
                 Console.ReadKey();
                 } while (gameOn);
+
+                Console.WriteLine("Victory is ours! The enemy has been extinguished!");
+                Console.ReadKey();
         }
 
         public static int GameInput()
@@ -295,5 +311,19 @@ namespace BattleShipCLI
             return gameBoard;
         }
 
+        public static bool PlayerHasWon(char[,] ships)
+        {
+            for (int row = 0; row < ships.GetLength(0); row++)
+            {
+                for (int i = 0; i < ships.GetLength(1); i++)
+                {
+                    if (ships[row, i] == '*')
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
+        }
     }
 }
