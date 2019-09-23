@@ -29,6 +29,12 @@ namespace BattleShipCLI
 
         static void Main(string[] args)
         {
+            bool debug = false;
+
+            if (args[0] == "--debug")
+                {
+                    debug = true;
+                }
 
             string[] responsToMiss = new string[] {
                 "What the hell is going on!! Are you blind?!",
@@ -65,7 +71,7 @@ namespace BattleShipCLI
 
             // TODO: Add function to exit program.
 
-            // TODO: Select gameboard size.
+            // Select gameboard size.
             Console.WriteLine("\nSelect Gameboard Size:");
             Console.Write("[X]>>");
             boardSizeX = GameInput();
@@ -78,6 +84,19 @@ namespace BattleShipCLI
             
             char[,] ships = new char[boardSizeY, boardSizeX];
             char[,] gameBoard = new char[boardSizeY, boardSizeX];
+
+            if (debug)
+            {
+                gameBoard = ships;
+                Console.WriteLine("Debug Mode!");
+            }
+
+             // Generate ships.
+            Random rand = new Random();
+            for (int i = 0; i < ships.GetLength(0); i++)
+            {
+
+            }
 
             Console.SetWindowSize(
                 gameBoard.GetLength(1) * 5, gameBoard.GetLength(0)+ 35);
