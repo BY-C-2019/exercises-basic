@@ -42,13 +42,16 @@ namespace BattleShipCLI
             string[] responsToMiss = new string[] {
                 "What the hell is going on!! Are you blind?!",
                 "My grandma aims better than that!",
-                "Figth harder or I´ll find someone who can!!"
+                "Fight harder or I´ll find someone who can!!"
             };
             string[] responsToHit = new string[5];
             string[] responsToSankShip = new string[5];
 
             int boardSizeX = 10;
             int boardSizeY = 10;
+
+            int gameTiles = boardSizeX * boardSizeY;
+            int shipGenerationNumber;
 
             int numberOfHits = 0;
             int torpedosUsed = 0;
@@ -81,6 +84,10 @@ namespace BattleShipCLI
             Console.Write("[X]>>");
             boardSizeY = GameInput();
 
+            Console.Write("Select number of ships:");
+            Console.Write("[Ships]>>");
+            shipGenerationNumber = GameInput();
+
             // Initialize Gameboard
             char[] interactLine = new char[boardSizeX * 4];
             char[] delimiterLine = new char[boardSizeX * 4];
@@ -90,9 +97,11 @@ namespace BattleShipCLI
 
              // Generate ships.
             Random rand = new Random();
-            for (int i = 0; i < ships.GetLength(0); i++)
+            for (int i = 0; i < shipGenerationNumber; i ++)
             {
-                ships[i, boardSizeX / 2] = '*';
+                int randX = rand.Next(0, boardSizeX);
+                int randY = rand.Next(0, boardSizeY);
+                ships[randY, randX] = ship;
             }
 
             
@@ -112,9 +121,9 @@ namespace BattleShipCLI
                 Console.Clear();
                 // Writes help for symbols.
                 Console.WriteLine("=================");
-                Console.WriteLine("Hit = '#'");
-                Console.WriteLine("Miss = '~'");
-                Console.WriteLine("Ship = '*'");
+                Console.WriteLine("Hit = " + hit);
+                Console.WriteLine("Miss = " + miss);
+                Console.WriteLine("Ship = " + ship);
                 Console.WriteLine();
                 Console.WriteLine("Torpedos used: " + torpedosUsed);
                 Console.WriteLine("Number of hits: " + numberOfHits);
@@ -236,7 +245,7 @@ namespace BattleShipCLI
                 if (HitDetection(fireCoordinateX, fireCoordinateY, ships, ship))
                 {
                     Console.WriteLine("Excellent commander! Thay never saw it comming!");
-                    ships[fireCoordinateY, fireCoordinateX] = '#';
+                    ships[fireCoordinateY, fireCoordinateX] = hit;
                     numberOfHits++;
                     torpedoStatus = hit;
                 }
@@ -252,7 +261,7 @@ namespace BattleShipCLI
                     fireCoordinateX, fireCoordinateY, gameBoard, torpedoStatus);
 
                 // Check win conditions.
-                if (PlayerHasWon(ships))
+                if (PlayerHasWon(ships, ship))
                 {
                     gameOn = false;
                 }
@@ -311,13 +320,13 @@ namespace BattleShipCLI
             return gameBoard;
         }
 
-        public static bool PlayerHasWon(char[,] ships)
+        public static bool PlayerHasWon(char[,] ships, char marker)
         {
             for (int row = 0; row < ships.GetLength(0); row++)
             {
                 for (int i = 0; i < ships.GetLength(1); i++)
                 {
-                    if (ships[row, i] == '*')
+                    if (ships[row, i] == marker)
                     {
                         return false;
                     }
