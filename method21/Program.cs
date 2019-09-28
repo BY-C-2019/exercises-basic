@@ -1,14 +1,20 @@
 ﻿using System;
+using System.Globalization;
 
 namespace exercise21
 {
     class Program
     {
+
         static void Main(string[] args)
         {
+
+
             bool run = true;
             while (run)
             {
+                var format = new NumberFormatInfo();
+                format.NegativeSign = "-";
                 Console.WriteLine("\n[MatteProgram]");
                 Console.WriteLine("\n");
                 Console.WriteLine("\n[1]. Pythagoras sats" +
@@ -99,15 +105,13 @@ namespace exercise21
                         Enter();
                         break;
                     case 7:
-                    // crashar när jag skriver in negativa tal i bash..
-                    // System.FormatException: Input string was not in a correct format.
                         Console.Clear();
                         Console.WriteLine("\n[Pq-Formeln]");
 
                         Console.Write("\nSkriv in ett värde på 'p': ");
-                        double p = double.Parse(Console.ReadLine());
+                        double p = double.Parse(Console.ReadLine(),format);
                         Console.Write("\nSkriv in ett värde på 'q': ");
-                        double q = double.Parse(Console.ReadLine());
+                        double q = double.Parse(Console.ReadLine(),format);
 
                         Console.WriteLine(Pqformel(p, q));
                         Enter();
@@ -215,7 +219,7 @@ namespace exercise21
             double x1 = -(p / 2) + Math.Sqrt(Math.Pow((p / 2), 2) - q);
             double x2 = -(p / 2) - Math.Sqrt(Math.Pow((p / 2), 2) - q);
             return "\nEkvationens rötter är: " + x1 + " och " + x2;
-            
+
         }
         static void Enter()
         {
