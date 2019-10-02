@@ -67,15 +67,17 @@ Skriv ett program som räknar baklänges från 40-30 och skriver ut dem på skä
 
 ## Övning 11
 
-`Se "Arrayövningar" på Pingpong`
+### Steg 1
+Skriv ett program som hämtar fem tal från användaren, och som sedan skriver ut talen samt deras sammanlagda summa. Ni kan välja om ni vill använda hel eller decimaltal men ni måste använda en vektor för att spara talen. Använd en vektor samt en for loop i er lösning.
+### Steg 2
+Skapa en string array med fem element. Användaren får mata in fem namn via en for-loop. Programmet skriver sedan ut dessa namn med hjälp av en for-loop.
+### Steg 3
+Efter att alla namn skrivits ut, ska användaren kunna skriva ett index och därefter ett annat namn. Personen på detta index i vektorn byts då ut och alla namn skrivs ut igen. Om användaren istället skriver ”q” eller ”Q” så avslutas programmet direkt.
+OBS! I alla dessa steg ska du använda dig av undantagshantering i form av try & catch. Du ska alltid använda en vektor samt minst en for loop.
 
-## Övning 12 
 
-`Se "Arrayövningar" på Pingpong`
+`Här saknas några övningar som är flyttade till egna repon`
 
-## Övning 13
-
-`Se "Väderstationen" på Pingpong`
 
 # Metoder
 ## Övning 14
